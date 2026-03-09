@@ -135,7 +135,7 @@ if train_file and test_file and rul_file:
 
         st.markdown("**Outlier Count per Sensor (IQR Method)**")
         outlier_df = pd.DataFrame(list(outlier_counts.items()), columns=["Sensor", "Outliers"]).sort_values("Outliers", ascending=False)
-        st.dataframe(outlier_df.style.bar(subset=["Outliers"], color="salmon"), use_container_width=True)
+        st.dataframe(outlier_df.style.bar(subset=["Outliers"], color="salmon"), width="stretch")
 
     # ------------------------------------------------------------------
     # Evaluation Method
@@ -207,9 +207,9 @@ if train_file and test_file and rul_file:
     if "best_model" in st.session_state:
         st.header("3. Results")
         if "results_df" in st.session_state:
-            st.dataframe(st.session_state.results_df.style.highlight_max(axis=0), use_container_width=True)
+            st.dataframe(st.session_state.results_df.style.highlight_max(axis=0), width="stretch")
         else:
-            st.dataframe(st.session_state.kfold_df, use_container_width=True)
+            st.dataframe(st.session_state.kfold_df, width="stretch")
 
         st.metric("Best Model", st.session_state.best_name)
         st.metric("Test Acc (last cycle)", f"{st.session_state.test_acc:.3f}")

@@ -81,6 +81,6 @@ with st.expander("System Architecture Overview"):
 st.markdown("---")
 st.markdown("### 📚 Project Resources")
 st.success("A comprehensive **Technical & Theoretical Guide** has been generated for your presentation.")
-st.markdown("[📄 Open Project Documentation](file:///C:/Users/gpran/.gemini/antigravity/brain/0c436b26-0a69-4d7a-a975-67651e5193e7/Project_Documentation.md)")
+st.markdown("[📄 Open Project Documentation](https://github.com/praneeeet/PredictiveMaintanence/blob/main/Project_Documentation.md)")
 
 st.caption("Developed for Predictive Maintenance Excellence.")

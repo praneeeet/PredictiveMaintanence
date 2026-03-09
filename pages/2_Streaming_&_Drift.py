@@ -1,3 +1,4 @@
+import io
 import time
 import numpy as np
 import pandas as pd
@@ -103,7 +104,7 @@ if "models_ready" in st.session_state and st.session_state.models_ready:
         "CatBoost (Hardcoded)": st.session_state.cb
     }
     init_eval = Evaluator.evaluate_all(init_models, data["X_test_last_scaled"], data["y_test_last"])
-    st.dataframe(init_eval, use_container_width=True)
+    st.dataframe(init_eval, width="stretch")
 
     # ===============================
     # Drift detection + streaming simulation (Real-World Optimized)
@@ -244,7 +245,10 @@ if "models_ready" in st.session_state and st.session_state.models_ready:
                     axs[idx].grid(True, alpha=0.1)
                 
                 plt.tight_layout()
-                st.pyplot(fig, clear_figure=True)
+                buf = io.BytesIO()
+                fig.savefig(buf, format="png")
+                st.image(buf)
+                plt.close(fig)
 
             # 4. Check for Orchestration Trigger
             drifted_in_chunk = len(set(current_chunk_drifts))
